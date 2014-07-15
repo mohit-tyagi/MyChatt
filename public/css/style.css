@@ -1,0 +1,39 @@
+body
+{
+    background-color: #f8f8f8;
+}
+
+.body-Login-back {
+    background-color:#84B899;
+}
+#wrapper {
+    width: 100%;
+    margin-top: 55px!important;
+    background-color:#04B173;
+}
+
+#page-wrapper {
+    padding: 0 15px;
+    min-height: 568px;
+    background-color:rgb(209, 212, 216);
+}
+
+
+
+
+
+.navbar-static-side ul li {
+    border-bottom:1px solid #84B899 !important;
+}
+
+
+
+.login-panel {
+    margin-top: 15%;
+}
+.body-Backcolor {
+    background-color:#000;
+}
+.logo-margin {
+    margin-top:100px;
+}

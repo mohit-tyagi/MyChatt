@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatting Corner</title>
+    <!-- Core CSS - Include with every page -->
+    <script src="public/javascripts/LoginChk.js"></script>
+    <link href="public/css/bootstrap.css" rel="stylesheet"/>
+    <link href="public/stylesheets/font-awesome.css" rel="stylesheet" />
+    <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+   <link href="public/css/style.css" rel="stylesheet" />
+      <link href="assets/css/main-style.css" rel="stylesheet" />
+
+</head>
+
+<body class="body-Login-back">
+
+    <div class="container tab-pane">
+       
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
+              <img src="public/images/socialhub.jpg" alt=""/>
+                </div>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">                  
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                        <p id="error">&nbsp</p>
+                    </div>
+                    <div class="">
+                        <form role="form" action="index.html" method="get" onsubmit="return validateForm();">
+                            <fieldset >
+                                <div class="form-group">
+                                    <input id="unm" class="form-control" placeholder="User Name" name="uname" type="text" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input id="pwd" class="form-control" placeholder="Password" name="password" required type="password" value="">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+                                <td><input type="submit" class="btn  btn-success " name="button" id="button" value="Submit" /></td>
+                               <!-- Change this to a button or input when using this as a form -->
+
+                           </fieldset>
+
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Core Scripts - Include with every page -->
+    <script src="assets/plugins/jquery-1.10.2.js"></script>
+    <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+</body>
+
+</html>
