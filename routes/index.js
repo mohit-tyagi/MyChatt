@@ -2,14 +2,21 @@
 /*
  * GET home page.
  */
-
+var fs = require("fs")
 var UserDB=require('../public/javascripts/userdb.js');
 var MyUserDB=new UserDB();
 
 exports.login = function(req, res){
-  res.send('Login page');
+    //console.log(__dirname)
+   var data= fs.readFileSync("login.html")
+  res.end(data);
 };
 
+exports.home = function(req, res){
+    //console.log(__dirname)
+    var data= fs.readFileSync("home.html")
+    res.end(data);
+};
 
 exports.allUser = function(req, res){
     MyUserDB.readDataAll(function(err,data){
@@ -31,7 +38,7 @@ exports.user = function(req, res) {
 }
 
 exports.addUser=function(req,res) {
-    console.log(req.body);
+    //console.log(req.body);
     MyUserDB.writeData(req.body, function (err, data) {
         if (err) res.send('Some Error' + err);
         else res.send('Record inserted');

@@ -2,52 +2,55 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatting Corner</title>
     <!-- Core CSS - Include with every page -->
     <script src="public/javascripts/LoginChk.js"></script>
     <link href="public/css/bootstrap.css" rel="stylesheet"/>
-    <link href="public/stylesheets/font-awesome.css" rel="stylesheet" />
-    <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-   <link href="public/css/style.css" rel="stylesheet" />
-      <link href="assets/css/main-style.css" rel="stylesheet" />
+    <link href="public/stylesheets/font-awesome.css" rel="stylesheet"/>
+    <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet"/>
+    <link href="public/css/style.css" rel="stylesheet"/>
+    <link href="assets/css/main-style.css" rel="stylesheet"/>
 
 </head>
 
 <body class="body-Login-back">
 
-    <div class="container tab-pane">
-       
-        <div class="row">
+<!-- <div class="container tab-pane">-->
+<table align="center" width="800px">
+    <tr>
+        <td colspan="2" align="center" height="300px">
             <div class="col-md-4 col-md-offset-4 text-center logo-margin ">
-              <img src="public/images/socialhub.jpg" alt=""/>
-                </div>
+                <img src="public/images/socialhub.jpg" alt=""/>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="background-color: #a4cae1" align="center">
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">                  
+                <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
+
                         <p id="error">&nbsp</p>
                     </div>
                     <div class="">
-                        <form role="form" action="index.html" method="get" onsubmit="return validateForm();">
-                            <fieldset >
+                        <form role="form" action="/home" method="post" onsubmit="return validateForm();">
+                            <fieldset>
                                 <div class="form-group">
-                                    <input id="unm" class="form-control" placeholder="User Name" name="uname" type="text" required autofocus>
+                                    <input id="unm" class="form-control" placeholder="User Name" name="uname"
+                                           type="text" required autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input id="pwd" class="form-control" placeholder="Password" name="password" required type="password" value="">
+                                    <input id="pwd" class="form-control" placeholder="Password" name="password" required
+                                           type="password" value="">
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
-                                <td><input type="submit" class="btn  btn-success " name="button" id="button" value="Submit" /></td>
-                               <!-- Change this to a button or input when using this as a form -->
+                                <input type="submit" class="btn  btn-success " name="button" id="button"
+                                       value="Submit"/>
+                                <!-- Change this to a button or input when using this as a form -->
 
-                           </fieldset>
-
+                            </fieldset>
 
 
                         </form>
@@ -55,13 +58,74 @@
 
                 </div>
             </div>
-        </div>
-    </div>
+        </td>
+        <td style="background-color: #cdb1c2" align="center">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Not Reagisterd ....<br>Sign up here</h3>
 
-     <!-- Core Scripts - Include with every page -->
-    <script src="assets/plugins/jquery-1.10.2.js"></script>
-    <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+                        <p id="lgerror">&nbsp</p>
+                    </div>
+
+
+                    <div class="">
+                        <form role="form" action="/user" method="post" onsubmit="return validateRegForm();">
+                            <fieldset>
+                                <div id="errorBox"></div>
+                                <div class="firstname">
+
+                                    <input type="text" name="Name" value="" placeholder="User Name"
+                                           class="input_name"/>
+                                </div>
+                                <div id="email_form">
+                                    <input type="text" name="Email" value="" placeholder="Your Email"
+                                           class="input_email">
+                                </div>
+                                <div id="Re_email_form">
+                                    <input type="text" name="enterEmail" value="" placeholder="Re-enter Email"
+                                           class="input_Re_email">
+                                </div>
+                                <div id="password_form">
+                                    <input type="password" name="Password" value="" placeholder="New Password"
+                                           class="input_password">
+                                </div>
+                                <div id="age_form">
+                                    <input type="number" name="age" min="0" max="100" value="" placeholder="Enter Age"
+                                           class="">
+                                </div>
+
+                                <div id="radio_button">
+                                    </div>
+                                <div>
+                                    <input type="submit" class="btn  btn-success " name="button" id="button"
+                                           value="Submit"/>
+                                </div>
+
+
+                            </fieldset>
+
+
+                        </form>
+                    </div>
+                    <!--form ends-->
+
+                </div>
+
+            </div>
+            </div>
+
+        </td>
+    </tr>
+</table>
+
+
+<!--   </div>-->
+
+<!-- Core Scripts - Include with every page -->
+<script src="assets/plugins/jquery-1.10.2.js"></script>
+<script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
 
 </body>
 

@@ -33,6 +33,8 @@ app.configure('production', function(){
 
 app.get('/', routes.login);
 
+app.get('/login', routes.login);
+
 app.get("/user",routes.allUser);
 
 app.get("/user/:uid?",routes.user);
@@ -43,12 +45,12 @@ app.put("/user/:uid?",routes.updateUser);
 
 app.delete("/user/:uid?",routes.deleteUser);
 
+app.post("/home",routes.home);
 
 
 
 
 
-
-app.listen(4000, function(){
+app.listen(5000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });

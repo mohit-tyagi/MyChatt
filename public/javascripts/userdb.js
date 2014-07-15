@@ -14,9 +14,10 @@ exports = module.exports =function(){
 
         name: String,
         password: String,
-        age:Number,
         email:String,
-        address:String
+        gender:String,
+        frends:[]
+
 
 });
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
