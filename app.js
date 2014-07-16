@@ -35,18 +35,19 @@ app.get('/', routes.login);
 
 app.get('/login', routes.login);
 
-app.get("/user",routes.allUser);
+//app.get("/user",routes.allUser);
 
-app.get("/user/:uid?",routes.user);
+app.get("/user/:uid",routes.user);
 
 app.post("/user",routes.addUser);
 
-app.put("/user/:uid?",routes.updateUser);
+app.put("/user/:uid",routes.updateUser);
 
-app.delete("/user/:uid?",routes.deleteUser);
+app.delete("/user/:uid",routes.deleteUser);
 
 app.post("/home",routes.home);
 
+app.get("/home",routes.home);
 
 
 

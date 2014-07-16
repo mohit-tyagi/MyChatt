@@ -13,10 +13,15 @@ exports = module.exports =function(){
     var UserSechema = new mongoose.Schema({
 
         name: String,
-        password: String,
         email:String,
+        password: String,
+        age:Number,
+        friends:[],
         gender:String,
-        frends:[]
+        education:String,
+        status:String,
+        hobby:String
+
 
 
 });
