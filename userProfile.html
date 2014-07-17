@@ -1,5 +1,29 @@
 <!DOCTYPE html>
-<div><h1>
-    This is profile  page
-</h1>
+<div class="">
+
+    <fieldset>
+
+        <div class="firstname">
+
+           Name >>><input type="text" id="name" name="name" value="{{person.name}}" placeholder="User Name"
+                   class="input_name" required/>
+        </div>
+        <div id="email_form">
+            Email>>><input type="email" id="email" name="email" value="{{person.email}}" placeholder="Your Email"
+                   class="input_email" required>
+        </div>
+        <div id="age_form">
+           Age>>> <input type="number" id="age" name="age" min="0" max="100" value="{{person.age}}" placeholder="Enter Age"
+                   class="" required="">
+        </div>
+        <button class="btn  btn-success " onclick="">Submit</button>
+
+        <div>
+
+        </div>
+
+    </fieldset>
+
+
+
 </div>

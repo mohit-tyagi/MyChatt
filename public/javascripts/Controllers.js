@@ -24,9 +24,43 @@ crosswordController.config(function($routeProvider) {
         .when('/friends', {
             templateUrl : 'friends.html',
             controller  : 'friendsController'
-        });
+        })
+
+    .when('/setting', {
+        templateUrl : 'setting.html',
+        controller  : 'settingController'
+    });
 });
 
+
+crosswordController.controller('mainController', ['$scope', '$http',
+        function ($scope, $http) {
+           $scope.person = [];
+            //console.log(window.localStorage.getItem("mySharedData"));
+           //var unm= window.localStorage.getItem("mySharedData");
+            $http({method:'get',url:'http://localhost:5000/session'}).success(function (username,status){ if(username){
+
+                $http({method: 'GET', url: 'http://localhost:5000/user/'+username}).
+                    success(function (data, status, headers, config) {
+                        $scope.person = data;
+                        console.log(data);
+                    }).
+                    error(function (data, status, headers, config) {
+
+                    });
+
+
+            }});
+
+            // get session name or id
+
+
+        }
+    ]);
+
+
+
+/*
 
 crosswordController.controller('mainController', function($scope) {
     // create a message to display in our view
@@ -37,20 +71,21 @@ crosswordController.controller('mainController', function($scope) {
     $scope.person.pageMessage = 'on main page';
 
 });
+*/
+
+
+
+
 crosswordController.controller('homeController', function($scope) {
     // create a message to display in our view
     $scope.person.pageHead = 'Home';
-    $scope.person.message = 'this is home page dear';
-    $scope.person.pageMessage = 'on home data page';
 
 
 });
 
+
 crosswordController.controller('profileController', function($scope) {
-    console.log('profile Controller');
     $scope.person.pageHead = 'Profile';
-    $scope.person.message = 'this is profile page dear';
-    $scope.person.pageMessage = 'on profile page';
 
 
 
@@ -59,10 +94,13 @@ crosswordController.controller('profileController', function($scope) {
 
 crosswordController.controller('friendsController', function($scope) {
     $scope.person.pageHead = 'Friends';
-    $scope.person.message = 'this is friends page dear';
-    $scope.person.pageMessage = 'on frend page';
 
 });
+crosswordController.controller('settingController', function($scope) {
+    $scope.person.pageHead = 'Settings';
+
+});
+
 
 /*
 

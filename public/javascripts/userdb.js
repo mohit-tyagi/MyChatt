@@ -12,7 +12,7 @@ exports = module.exports =function(){
 // to create schema like a TABLE (field name:data type );
     var UserSechema = new mongoose.Schema({
 
-        name: String,
+        name:{type:String ,index:{unique:true}},
         email:String,
         password: String,
         age:Number,

@@ -8,8 +8,8 @@
     <!-- Core CSS - Include with every page -->
     <script src="public/javascripts/LoginChk.js"></script>
     <link href="public/css/bootstrap.css" rel="stylesheet"/>
-    <link href="public/stylesheets/font-awesome.css" rel="stylesheet"/>
-    <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet"/>
+    <!--<link href="public/stylesheets/font-awesome.css" rel="stylesheet"/>
+    --><link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet"/>
     <link href="public/css/style.css" rel="stylesheet"/>
     <link href="assets/css/main-style.css" rel="stylesheet"/>
 
@@ -36,7 +36,6 @@
                         <p id="error">&nbsp</p>
                     </div>
                     <div class="">
-                        <form role="form" action="/home" method="post" onsubmit="return validateForm();">
                             <fieldset>
                                 <div class="form-group">
                                     <input id="unm" class="form-control" placeholder="User Name" name="uname"
@@ -46,14 +45,12 @@
                                     <input id="pwd" class="form-control" placeholder="Password" name="password" required
                                            type="password" value="">
                                 </div>
-                                <input type="submit" class="btn  btn-success " name="button" id="button"
-                                       value="Login"/>
-                                <!-- Change this to a button or input when using this as a form -->
+                                <button class="btn  btn-success " onclick="validateForm()">Login</button> <!-- Change this to a button or input when using this as a form -->
 
                             </fieldset>
 
 
-                        </form>
+
                     </div>
 
                 </div>
@@ -79,14 +76,10 @@
                                            class="input_name" required/>
                                 </div>
                                 <div id="email_form">
-                                    <input type="text" id="email" name="email" value="" placeholder="Your Email"
+                                    <input type="email" id="email" name="email" value="" placeholder="Your Email"
                                            class="input_email" required>
                                 </div>
-                                <div id="Re_email_form">
-                                    <input type="text" id="enterEmail" name="enterEmail" value="" placeholder="Re-enter Email"
-                                           class="input_Re_email" required>
-                                </div>
-                                <div id="password_form">
+                               <div id="password_form">
                                     <input type="password" id="password" name="password" value="" placeholder="New Password"
                                            class="input_password" required="">
                                 </div>
@@ -97,6 +90,9 @@
 
                                 <button class="btn  btn-success " onclick="register()">Submit</button>
                                 <button class="btn  btn-info " onclick="reset()">Reset</button>
+                                <div>
+
+                                </div>
 
                             </fieldset>
 
@@ -128,33 +124,108 @@
 <script src="assets/plugins/jquery-1.10.2.js"></script>
 <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script> {
+<script>
+    {
+
+        var validateForm =function (){
+           //var name=$('#unm').val();
+            //window.localStorage.setItem("mySharedData",name);
+            if($('#unm').val().length<1)    $('#error').html("<h4>Name can not be blank</h4>").css("background-Color","red");
+            else  if($('#pwd').val().length<1)    $('#error').html('Password can not be blank').css("background-Color","red");
+else
+            {
+
+                var udata = {
+                    name: $('#unm').val(),
+                    password: $('#pwd').val()
+
+                };
+               // console.log(data);
+
+                $.ajax({
+                    type: "post",
+                    url: '/auth',
+                    data: udata,
+                    success: function (data, status) {
+                        if(status=="success")
+                        {
+                            if(data=='User does Not exist')  $('#error').html(data).css("background-Color","red");
+                            if(data=="Wrong Password")  $('#error').html(data).css("background-Color","red");
+                            if(data=="Permission Granted") {
+
+                               window.location.href = 'http://localhost:5000/home';
+
+                              /*  $.ajax({
+                                    type:"post",
+                                    url:'/session',
+                                    data:udata,
+                                    success:function(data,status){
+                                        console.log(data);
+
+                                        window.location.href = 'http://localhost:5000/home'; }
+
+
+                                });*/
+                            }
+
+                        }
+
+                    },
+                    error:function (err) {$('#error').html("Server Error Try again later").css("background-Color","red");}
+
+                });
+
+
+            }
+
+
+
+        };
+
+
+
     var reset=function()
     {
         $('#name').val("");
         $('#email').val("");
-        $('#enterEmail').val("");
         $('#password').val("");
         $("#age").val("");
-    }
+   }
     var register=function() {
-        var data = {
-            name: $('#name').val(),
-            email: $('#email').val(),
-            password: $('#password').val(),
-            age:$("#age").val()
+        //window.location.href='http://www.google.com';
+        //window.open('http://www.google.com');
+        if($('#name').val().length<1)    $('#msg').html("<h4>Name can not be blank</h4>").css("background-Color","red");
+        else  if($('#email').val().length<1)    $('#msg').html('Email can not be blank').css("background-Color","red");
+        else  if($('#password').val().length<1)    $('#msg').html('Password can not be blank').css("background-Color","red");
+else {
 
-        };
-        $.ajax({
-            type: "post",
-            url: '/user',
-            data: data,
-            success: function (data,status) {
-                $('#msg').html('successfully registered');
-                reset();
-            }
+            var data = {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                password: $('#password').val(),
+                age: $("#age").val()
 
-        });
+            };
+
+            $.ajax({
+                type: "post",
+                url: '/user',
+                data: data,
+                success: function (data, status) {
+                    console.log(data ,">>>>>>>><<<<<<<<<<",status);
+                    if(data=='Registered Successfully') {
+                        $('#msg').html('successfully registered').css("background-Color", "green");
+                        reset();
+                    }
+                    else
+                        $('#msg').html('User Allready exist').css("background-Color","red");
+
+
+
+                }
+
+            });
+        }
     };
 }
 </script>

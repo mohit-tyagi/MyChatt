@@ -2806,7 +2806,7 @@ function createEventHandler(element, events) {
     }
 
     event.isDefaultPrevented = function() {
-      return event.defaultPrevented || event.returnValue === false;
+      return event.defaultPrevented //|| event.returnValue === false;
     };
 
     // Copy event handlers in case event handlers array is modified during execution.

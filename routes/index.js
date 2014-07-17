@@ -13,7 +13,25 @@ exports.login = function(req, res){
   //res.end(data);
 };
 
+exports.auth = function(req, res){
+ var ud=req.body.name;
+    var pwd=req.body.password;
+    //console.log(ud+">>>><<<<<<    "+pwd);
+    MyUserDB.readData(ud, function (err, data) {
+        if (err) res.send('Some Error' + err);
+        else if (data) {
+            //console.log(data);
+            if(data.password==pwd){ req.session.name=ud; res.send("Permission Granted");} else res.send( "Wrong Password");
+        }
+        else res.send("User does Not exist");
+        res.end();
+    });
+
+};
+
+
 exports.home = function(req, res){
+    console.log(res.session);
     res.redirect("/home.html");
 
     //console.log(__dirname)
@@ -46,7 +64,7 @@ exports.addUser=function(req,res) {
     req.body.education="";
     req.body.status="";
     req.body.hobby="";
-  console.log(req.body);
+  //console.log(req.body);
     MyUserDB.writeData(req.body, function (err, data) {
         if (err) res.send('Some Error' + err);
         else res.send("Registered Successfully");
