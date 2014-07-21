@@ -7,13 +7,24 @@ var UserDB=require('../public/javascripts/userdb.js');
 var MyUserDB=new UserDB();
 
 exports.login = function(req, res){
-   res.redirect("/login.html");
-    //console.log(__dirname)
-   //var data= fs.readFileSync("login.html")
-  //res.end(data);
+   // console.log(req.session);
+    //console.log(req.sessionID);
+    if(req.session.name)
+        res.redirect("/home");
+    else
+        var data= fs.readFileSync(__dirname+"/../extra/login.html")
+    res.end(data);
+    res.end();
+
+
+
+  //res.redirect("/login_back.html");
+    console.log(__dirname)
+
 };
 
 exports.auth = function(req, res){
+    //console.log("1.>>>>>>>>>",req.sessionID,"<<<<<<<<<<",req.sessionStore);
  var ud=req.body.name;
     var pwd=req.body.password;
     //console.log(ud+">>>><<<<<<    "+pwd);
@@ -31,16 +42,19 @@ exports.auth = function(req, res){
 
 
 exports.home = function(req, res){
-    console.log(res.session);
-    res.redirect("/home.html");
 
-    //console.log(__dirname)
-   // var data= fs.readFileSync("home.html")
-    //res.end(data);
+
+    //res.redirect("/home");
+
+    console.log(__dirname)
+   var data= fs.readFileSync("home.html")
+    res.end(data);
 };
 
 exports.allUser = function(req, res){
+   // console.log("Looking for user data......");
     MyUserDB.readDataAll(function(err,data){
+       // console.log(data);
         if(err) res.send('Some Error'+err);
         else res.json(data);   //res.send(data);
         res.end();

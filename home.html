@@ -227,21 +227,24 @@
             <li class="sidebar-search">
                 <!-- search section-->
                 <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="text" class="form-control" placeholder="Search..." ng-model="searchByName">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
+                                    <a href="#user" >   <i class="fa fa-search "></i></a>
                                 </button>
                             </span>
                 </div>
                 <!--end search section-->
             </li>
             <li class="selected">
-                <a href="/home"><i class="fa fa-dashboard fa-fw"></i>Home</a>
+                <a href="#"><i class="fa fa-dashboard fa-fw"></i>Home</a>
             </li>
 
             <li>
                 <a href="#friends"><i class="fa fa-flask fa-fw"></i>friends</a>
+            </li>
+            <li>
+                <a href="#user"><i class="fa fa-flask fa-fw"></i>User List</a>
             </li>
 
 
@@ -283,14 +286,14 @@
 
 
     <div class="row" id="main">
-        {{person.message}}
+        <!--{{person.message}}
         <br>
         {{person.name}}
         <br>
         {{person.ud}}
         <br>
         {{person.pageMessage}}
-
+-->
 
         <div ng-view>  <!-- ng-view area-->
 

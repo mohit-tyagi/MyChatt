@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<div>
+         <table class="table table-striped table-hover ">
+
+                <tbody>
+                <tr class="info" ng-repeat="user in person.users | filter:searchByName ">
+                    <td>{{user.name}}</td>
+                    <td><button onclick="">Add Friend</button> </td>
+               </tr>
+
+                </tbody>
+            </table>
+
+</div>

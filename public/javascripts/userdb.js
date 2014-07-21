@@ -41,6 +41,12 @@ exports = module.exports =function(){
 
     }
 
+    this.userList=function(){
+        user.find({},{name:1}).limit(0).exec(function(err,result){
+            if (err) callback(err);
+            else callback(null,result);
+        })
+    };
 
     this.readData=function(unm,callback){
         //console.log(unm);
@@ -52,7 +58,7 @@ exports = module.exports =function(){
     }
 
     this.readDataAll=function(callback){
-        user.find({}).limit(0).exec(function(err,result){
+        user.find({},{name:1,_id:0}).limit(0).exec(function(err,result){
             if (err) callback(err);
             else callback(null,result);
         })

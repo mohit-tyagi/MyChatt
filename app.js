@@ -2,11 +2,11 @@
 /**
  * Module dependencies.
  */
-
+var fs=require('fs');
 var express = require('express')
   , routes = require('./routes');
 var session=require('express-session');
-
+var bodyParser=require('body-parser');
 var http = require('http');
 
 var app = module.exports = express.createServer();
@@ -14,10 +14,10 @@ var app = module.exports = express.createServer();
 // Configuration
 
 app.configure(function(){
-    app.use(session({secret:'Mohit Kumar'}))
+    app.use(session({secret:'Mohit Kumar'}));
 
     app.use(express.static(__dirname ));
- app.use(express.bodyParser());
+ app.use(bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static('./public'));
@@ -33,13 +33,15 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.login);
+app.get('/', function(req,res){
+    res.redirect('/login');
+});
 
 app.get('/login', routes.login);
 
 app.post('/auth', routes.auth);
 
-//app.get("/user",routes.allUser);
+app.get("/user",routes.allUser);
 
 app.get("/user/:uid",routes.user);
 
@@ -53,20 +55,27 @@ app.get("/home",function(req,res){
 
     //console.log( req.session.name);
     if(req.session.name)
-    res.redirect("/home.html");
+    {
+        var data= fs.readFileSync("home.html")
+        res.end(data);
+    }
+
     else
-    res.redirect("/login.html");
+    res.redirect("/login");
     res.end();
 
 });
 
 app.get("/logout",function(req,res){
+   // console.log(req.sessionID);
    req.session.name=undefined;
-    res.redirect("/login.html");
+    res.redirect("/login");
     res.end();
 } );
 
 app.get("/session",function(req,res){
+    //console.log(req.sessionID);
+
     res.send(req.session.name);
     res.end();
 } );
